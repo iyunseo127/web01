@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY VIDEO PORTFOLIO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="btn-wrap">
+        <a href="#" onclick="history.back(); return false;" class="back-btn">← 뒤로 가기</a>
+    </div>
+    
+    <h1>MY VIDEO</h1>
+    
+    <div class="grid">
+       <div class="card" onclick="openVideoModal('file/video.mp4')">
+         <img class="card-thumb" src="img/IMG_2701.jpg" alt="01">
+         <div class="card-info">
+            <h2>이감 2027 수능 응원영상</h2>
+            <span>2026 제작</span>
+         </div>
+       </div> 
+
+       <div class="card" onclick="openVideoModal('file/video01.mp4')">
+         <img class="card-thumb" src="img/스크린샷 2026-06-12 오전 10.26.28.png" alt="02">
+         <div class="card-info">
+            <h2>이감 환승연애 컨셉 홍보 영상</h2>
+            <span>2026 제작</span>
+         </div>
+       </div> 
+
+       <div class="card" onclick="openVideoModal('file/video02.mp4')">
+         <img class="card-thumb" src="img/스크린샷 2026-06-12 오전 10.26.52.png" alt="03">
+         <div class="card-info">
+            <h2>이감 불법 복제 캠페인 영상</h2>
+            <span>2026 제작</span>
+         </div>
+       </div> 
+
+       <div class="card" onclick="openVideoModal('file/video03.mp4')">
+         <img class="card-thumb" src="img/스크린샷, 2026-06-12 10.27.29.png" alt="04">
+         <div class="card-info">
+            <h2>2027 6월 모의고사 이감 영상</h2>
+            <span>2026 제작</span>
+         </div>
+       </div> 
+    </div>
+
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <div class="close-btn" onclick="closeVideoModal()">X</div>
+            
+            <video id="portfolioVideo" controls autoplay>
+                <source src="" type="video/mp4">
+                브라우저가 비디오 태그를 지원하지 않습니다.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("videoModal");
+        const videoElement = document.getElementById("portfolioVideo");
+
+        // 팝업 열기 & 동영상 재생
+        function openVideoModal(videoSrc) {
+            videoElement.src = videoSrc;  
+            modal.style.display = "flex"; 
+            videoElement.play();          
+        }
+
+        // 팝업 닫기 & 동영상 정지
+        function closeVideoModal() {
+            modal.style.display = "none"; 
+            videoElement.pause();         
+            videoElement.src = "";        
+        }
+
+        // 팝업창 바깥(어두운 배경)을 클릭해도 창이 닫히도록 설정
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeVideoModal();
+            }
+        }
+    </script>
+</body>
+</html>
